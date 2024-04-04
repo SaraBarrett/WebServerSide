@@ -1,15 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.fe')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-
-<body>
+@section('content')
     <h4>Olá, estou em casa!</h4>
+    <img class="test-img" src="{{ asset('images/assesement.jpeg') }}" alt="" sizes="" srcset="">
     <ul>
         <a href="{{ route('home.welcome') }}">
             <li>Welcome</li>
@@ -26,6 +19,4 @@
                 tarefas</li>
         </a>
     </ul>
-</body>
-
-</html>
+@endsection
