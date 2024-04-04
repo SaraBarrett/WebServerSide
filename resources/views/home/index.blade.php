@@ -1,5 +1,7 @@
 @extends('layouts.fe')
-
+@section('title')
+    <title>Eu sou o título</title>
+@endsection
 @section('content')
     <h4>Olá, estou em casa!</h4>
     <img class="test-img" src="{{ asset('images/assesement.jpeg') }}" alt="" sizes="" srcset="">
