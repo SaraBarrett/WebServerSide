@@ -10,7 +10,14 @@ class IndexController extends Controller
         $sum = $this->sum(1,3);
         $helloVar = $this->helloFunc();
 
-        return view('home.index', compact('sum', 'helloVar'));
+        $myArray = [
+            'name'=>'Sara',
+            'age'=> 37,
+            'profession'=>'web Developer'
+        ];
+
+
+        return view('home.index', compact('sum', 'helloVar', 'myArray'));
     }
 
     public function helloWorld(){

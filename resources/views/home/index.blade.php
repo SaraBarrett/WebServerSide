@@ -26,4 +26,7 @@
     <hr>
     <h5>A soma é {{ $sum }}, {{ $helloVar }}!</h5>
     <h6>A nossa primeira variável é {{ $helloVar }}.</h6>
+
+    <h2>{{$myArray['name']}}</h2>
+    <h2>{{$myArray['age']}}</h2>
 @endsection
