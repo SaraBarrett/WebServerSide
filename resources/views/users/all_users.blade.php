@@ -5,10 +5,24 @@
 
     {{ $cesaeInfo['name'] }}
 
-    <h5>Nomes</h5>
-    <ul>
-        @foreach ($allUsers as $user)
-            <li>{{ $user[1] }} e o telefone é {{ $user[2] }}</li>
-        @endforeach
-    </ul>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Phone</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($allUsers as $user)
+                <tr>
+                    <th scope="row">{{ $user['id'] }}</th>
+                    <td>{{ $user['name'] }}</td>
+                    <td>{{ $user['phone'] }}</td>
+                </tr>
+            @endforeach
+
+        </tbody>
+    </table>
 @endsection

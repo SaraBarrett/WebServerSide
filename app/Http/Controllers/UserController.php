@@ -10,7 +10,7 @@ class UserController extends Controller
 
         $cesaeInfo = $this->getCesaeInfo();
         $allUsers = $this->getUsers();
-
+        //dd( $allUsers);
         return view('users.all_users', compact('cesaeInfo', 'allUsers'));
     }
 
@@ -25,11 +25,11 @@ class UserController extends Controller
 
     protected function getUsers(){
         $users = [
-            [1, 'Ana', '912222333'],
-            [2, 'Luís', '912222333'],
-            [3, 'Miguel', '912222333'],
-            [4, 'Jéssica', '912222333'],
-            [5, 'Filipe', '912222333'],
+            ['id'=> 1, 'name'=> 'Ana', 'phone'=> '912222333'],
+            ['id'=>2, 'name'=> 'Luís', 'phone'=> '912222333'],
+            ['id'=>3, 'name'=> 'Miguel', 'phone'=> '912222333'],
+            ['id'=>4, 'name'=> 'Jéssica', 'phone'=>'912222333'],
+            ['id'=> 5, 'name'=>  'Filipe','phone'=> '912222333'],
         ];
 
 
