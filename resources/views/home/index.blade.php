@@ -3,6 +3,7 @@
     <title>Eu sou o título</title>
 @endsection
 @section('content')
+
     <h4>Olá, estou em casa!</h4>
     <img class="test-img" src="{{ asset('images/assesement.jpeg') }}" alt="" sizes="" srcset="">
     <ul>
@@ -21,4 +22,8 @@
                 tarefas</li>
         </a>
     </ul>
+
+    <hr>
+    <h5>A soma é {{ $sum }}, {{ $helloVar }}!</h5>
+    <h6>A nossa primeira variável é {{ $helloVar }}.</h6>
 @endsection

@@ -10,7 +10,7 @@ class IndexController extends Controller
         $sum = $this->sum(1,3);
         $helloVar = $this->helloFunc();
 
-        return view('home.index');
+        return view('home.index', compact('sum', 'helloVar'));
     }
 
     public function helloWorld(){
