@@ -11,10 +11,13 @@ class UserController extends Controller
         $cesaeInfo = $this->getCesaeInfo();
         $allUsers = $this->getUsers();
 
-        $delegadoTurma = DB::table('users')->where('name', 'tiago')->first();
+        $delegadoTurma = DB::table('users')
+                        ->where('id', 4)
+                        ->where('name', 'Sara')
+                        ->first();
 
        // dd( $delegado);
-        return view('users.all_users', compact('cesaeInfo', 'allUsers'));
+        return view('users.all_users', compact('cesaeInfo', 'allUsers', 'delegadoTurma'));
     }
 
     public function viewUser(){
@@ -56,6 +59,7 @@ class UserController extends Controller
 
         $users = DB::table('users')
                 //->where('name', 'liliana')
+                ->whereNotNull('updated_at')
                 ->get();
 
         //dd($users);
