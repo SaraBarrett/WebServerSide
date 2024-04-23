@@ -12,6 +12,8 @@ Route::get('/home', [IndexController::class, 'homePage'] )->name('homenomedarota
 
 Route::get('/users', [UserController::class, 'allUsers'])->name('users.all');
 
+Route::get('/user', [UserController::class, 'viewUser'])->name('users.view');
+
 Route::get('/tasks', function () {
     return view('tasks.all_tasks');
 })->name('tasks.all');

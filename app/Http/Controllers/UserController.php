@@ -14,6 +14,10 @@ class UserController extends Controller
         return view('users.all_users', compact('cesaeInfo', 'allUsers'));
     }
 
+    public function viewUser(){
+        return view('users.user_view');
+    }
+
     protected function getCesaeInfo(){
         $cesaeInfo = [
             'name'=>'cesae',
