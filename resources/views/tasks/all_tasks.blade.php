@@ -1,22 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.fe')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
+@section('content')
+    <h4>Tarefas</h4>
 
-<body>
-
-    <h1>Tarefas</h1>
-    <ol>
-        <li>Rui: mudar as tarefas da turma</li>
-        <li>Maru: dizer à Sara para ir mais devagar</li>
-
-    </ol>
-
-</body>
-
-</html>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nome da Tarefa</th>
+                <th scope="col">Responsável da Tarefa</th>
+                <th scope="col">Descrição</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($tasks as $key)
+                <tr>
+                    <th scope="row">{{ $key->id }}</th>
+                    <td>{{ $key->name }}</td>
+                    <td>{{ $key->usname }}</td>
+                    <td>{{ $key->description }}</td>
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
+@endsection

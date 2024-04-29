@@ -2,17 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
     public function allUsers(){
+
         $cesaeInfo = $this->getCesaeInfo();
         $allUsers = $this->getUsers();
 
         $delegadoTurma = DB::table('users')
-                        ->where('id', 4)
+                        ->where('id', 1)
                         ->where('name', 'Sara')
                         ->first();
 
@@ -20,9 +22,21 @@ class UserController extends Controller
         return view('users.all_users', compact('cesaeInfo', 'allUsers', 'delegadoTurma'));
     }
 
-    public function viewUser(){
-        return view('users.user_view');
+    public function viewUser($id){
+
+       $user = Db::table('users')->where('id', $id)->first();
+
+
+        return view('users.user_view', compact('user'));
     }
+
+    public function deleteUser($id){
+
+        DB::table('tasks')->where('user_id', $id)->delete();
+        DB::table('users')->where('id', $id)->delete();
+
+        return redirect()->route('users.all');
+     }
 
     public function addUser(){
 
@@ -57,10 +71,12 @@ class UserController extends Controller
             ['id'=> 5, 'name'=>  'Filipe','phone'=> '912222333'],
         ];*/
 
-        $users = DB::table('users')
+
                 //->where('name', 'liliana')
-                ->whereNotNull('updated_at')
-                ->get();
+       // $users = User::whereNull('updated_at')
+
+                $users = User::all();
+
 
         //dd($users);
 

@@ -12,6 +12,8 @@
                 <th scope="col">#</th>
                 <th scope="col">Nome</th>
                 <th scope="col">Email</th>
+                <th></th>
+                <th></th>
 
             </tr>
         </thead>
@@ -21,6 +23,9 @@
                     <th scope="row">{{ $user->id }}</th>
                     <td>{{ $user->name }}</td>
                     <td>{{ $user->email }}</td>
+                    <td><a href="{{route('users.view', $user->id)}}" class="btn btn-info">Ver</a></td>
+                    <td><a href="{{route('users.delete', $user->id)}}" class="btn btn-danger">Apagar</a></td>
+
                 </tr>
             @endforeach
 
