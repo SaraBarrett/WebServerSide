@@ -18,6 +18,8 @@ Route::get('/delete-user/{id}', [UserController::class, 'deleteUser'])->name('us
 
 Route::get('/add-user', [UserController::class, 'addUser'])->name('users.add');
 
+Route::post('/create-user', [UserController::class, 'createUser'])->name('users.create');
+
 
 Route::get('/tasks', [TaskController::class, 'allTasks'])->name('tasks.all');
 

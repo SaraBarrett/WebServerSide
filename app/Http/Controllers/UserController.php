@@ -82,4 +82,15 @@ class UserController extends Controller
 
         return  $users;
     }
+
+    public function createUser(Request $request){
+
+        $request->validate([
+            'name' => 'string|max:5',
+            'password' => 'required|min:5',
+        ]);
+
+        dd($request->all());
+
+    }
 }
