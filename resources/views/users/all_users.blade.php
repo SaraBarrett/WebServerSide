@@ -1,10 +1,15 @@
 @extends('layouts.fe')
 
 @section('content')
-    <h1>Olá, aqui tens uma lista de todos os users.</h1>
+    {{-- <h1>Olá, aqui tens uma lista de todos os users.</h1>
     <h5>Delegado de turma: {{ $delegadoTurma->name }}: {{ $delegadoTurma->email }}{{ $delegadoTurma->id }}</h5>
 
-    {{ $cesaeInfo['name'] }}
+    {{ $cesaeInfo['name'] }} --}}
+    @if (session('message'))
+        <div class="alert alert-success">
+            {{ session('message') }}
+        </div>
+    @endif
 
     <table class="table">
         <thead>
