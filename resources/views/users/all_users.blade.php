@@ -5,6 +5,10 @@
     <h5>Delegado de turma: {{ $delegadoTurma->name }}: {{ $delegadoTurma->email }}{{ $delegadoTurma->id }}</h5>
 
     {{ $cesaeInfo['name'] }} --}}
+    <form action="">
+        <input type="text" name="search" value="{{ request()->query('search') }}">
+        <button class="btn btn-info">Procurar</button>
+    </form>
     @if (session('message'))
         <div class="alert alert-success">
             {{ session('message') }}

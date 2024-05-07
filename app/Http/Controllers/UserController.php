@@ -12,12 +12,36 @@ class UserController extends Controller
     public function allUsers(){
 
         $cesaeInfo = $this->getCesaeInfo();
-        $allUsers = $this->getUsers();
+        //$allUsers = $this->getUsers();
 
         $delegadoTurma = DB::table('users')
                         ->where('id', 1)
                         ->where('name', 'Sara')
                         ->first();
+
+
+
+        //sem ternário
+        /*$search = null;
+
+        if(request()->query('search')){
+            $search = request()->query('search');
+        }else{
+            $search = null;
+        }*/
+
+        $search = request()->query('search')?request()->query('search'):null;
+
+        if( $search){
+            $allUsers = Db::table('users')
+            ->where('name', 'LIKE', "%{$search}%")
+            ->orWhere('email', 'LIKE', "%{$search}%")
+            ->get();
+        }else{
+             //query que busca todos os users
+            $allUsers = Db::table('users')->get();
+        }
+
 
        // dd( $delegado);
         return view('users.all_users', compact('cesaeInfo', 'allUsers', 'delegadoTurma'));
