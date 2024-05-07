@@ -49,7 +49,7 @@
         </div>
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Email address</label>
-            <input name="email" value="" type="email" class="form-control" id="exampleInputEmail1"
+            <input name="email" value="{{ old('email') }}" type="email" class="form-control" id="exampleInputEmail1"
                 aria-describedby="emailHelp">
             @error('email')
                 erro de email

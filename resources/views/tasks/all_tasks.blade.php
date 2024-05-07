@@ -3,6 +3,16 @@
 @section('content')
     <h4>Tarefas</h4>
 
+    @if (session('message'))
+        <div class="alert alert-success">
+            {{ session('message') }}
+        </div>
+    @endif
+    @if (session('error'))
+        <div class="alert alert-danger">
+            {{ session('error') }}
+        </div>
+    @endif
     <table class="table">
         <thead>
             <tr>

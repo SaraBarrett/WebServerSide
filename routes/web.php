@@ -22,6 +22,8 @@ Route::post('/create-user', [UserController::class, 'createUser'])->name('users.
 
 
 Route::get('/tasks', [TaskController::class, 'allTasks'])->name('tasks.all');
+Route::get('/add-task', [TaskController::class, 'addTask'])->name('tasks.add');
+Route::post('/create-task', [TaskController::class, 'createTask'])->name('tasks.create');
 
 
 Route::get('/hello', [IndexController::class, 'helloWorld'])->name('home.hello');

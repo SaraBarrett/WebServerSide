@@ -86,19 +86,39 @@ class UserController extends Controller
 
     public function createUser(Request $request){
 
-        $request->validate([
-            'name' => 'string|max:10',
-            'password' => 'required|min:5',
-            'email' => 'required|email|unique:users',
+        if(isset($request->id)){
+            $request->validate([
+                'name' => 'string|max:10',
+                'address' => 'string',
+                'cpostal' => 'string',
+            ]);
+
+            User::where('id', $request->id)
+            ->update([
+                'name' => $request->name,
+                'address' => $request->address,
+                'cpostal' => $request->cpostal,
+            ]);
+
+            return redirect()->route('users.all')->with('message', 'User actualizado com sucesso');
+
+        }else{
+
+            $request->validate([
+                'name' => 'string|max:10',
+                'password' => 'required|min:5',
+                'email' => 'required|email|unique:users',
+            ]);
+
+        User::insert([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
         ]);
 
-       User::insert([
-        'name' => $request->name,
-        'email' => $request->email,
-        'password' => Hash::make($request->password),
-       ]);
+        return redirect()->back()->with('message', 'User adicionado com sucesso');
+        }
 
-       return redirect()->back()->with('message', 'User adicionado com sucesso');
 
     }
 }
