@@ -29,6 +29,7 @@
                     <td>{{ $key->name }}</td>
                     <td>{{ $key->usname }}</td>
                     <td>{{ $key->description }}</td>
+                    <td><a class="btn btn-info" href="{{route('tasks.edit',$key->id )}}">Ver / Editar</a></td>
                 </tr>
             @endforeach
         </tbody>

@@ -33,6 +33,23 @@ class TaskController extends Controller
     }
 
     public function createTask(Request $request){
+
+        //if has an id, it's an update
+        if(isset($request->id)){
+            $request->validate([
+                'name' => 'required|string|max:10',
+                'description' => 'required|string|max:255',
+                'due_at' => 'date',
+            ]);
+
+            db::table('tasks')->where('id', $request->id)->update([
+                'name' => $request->name,
+                'description' => $request->description,
+                'due_at' => $request->due_at,
+            ]);
+            return redirect()->route('tasks.all')->with('message', 'Tarefa actualizada com sucesso!');
+
+        }else{
         $request->validate([
             'name' => 'required|string|max:10',
             'description' => 'required|string|max:255',
@@ -47,5 +64,19 @@ class TaskController extends Controller
 
 
         return redirect()->route('tasks.all')->with('message', 'Tarefa adicionada com sucesso!');
+
+
+    }
+    }
+
+    public function editTask($id){
+        $task = db::table('tasks')
+        ->where('id', $id)
+        ->first();
+
+
+        $allUsers = DB::table('users')->get();
+
+        return view('tasks.edit', compact('task', 'allUsers'));
     }
 }

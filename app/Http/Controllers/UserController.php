@@ -88,7 +88,7 @@ class UserController extends Controller
 
         if(isset($request->id)){
             $request->validate([
-                'name' => 'string|max:10',
+                'name' => 'string',
                 'address' => 'string',
                 'cpostal' => 'string',
             ]);
