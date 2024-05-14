@@ -63,9 +63,10 @@ class UserController extends Controller
         return redirect()->route('users.all');
      }
 
-    public function addUser(){
 
-        DB::table('users')
+     public function addUser(){
+
+       /* DB::table('users')
         ->updateOrInsert(
             [
             'email' => 'liliana@gmail.com',
@@ -74,7 +75,9 @@ class UserController extends Controller
             'name' => 'liliana',
             'password'=> 6666,
             'updated_at'=>now()
-        ]);
+        ]);*/
+
+        return view('users.create_user');
 
     }
 
