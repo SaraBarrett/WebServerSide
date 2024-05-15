@@ -4,12 +4,18 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
     public function allUsers(){
+
+        //IF PROFILE IS ADMIN
+        //$admin = User::TYPE_ADMIN;
+        //$adminUsers = User::where('user_type', $admin)->get();
 
         $cesaeInfo = $this->getCesaeInfo();
         //$allUsers = $this->getUsers();
@@ -114,17 +120,24 @@ class UserController extends Controller
     public function createUser(Request $request){
 
         if(isset($request->id)){
+            $photo = null;
+
             $request->validate([
                 'name' => 'string',
                 'address' => 'string',
                 'cpostal' => 'string',
             ]);
 
+            if($request->hasFile('photo')){
+                $photo = Storage::putFile('userPhotos/', $request->photo);
+            }
+
             User::where('id', $request->id)
             ->update([
                 'name' => $request->name,
                 'address' => $request->address,
                 'cpostal' => $request->cpostal,
+                'photo' => $photo,
             ]);
 
             return redirect()->route('users.all')->with('message', 'User actualizado com sucesso');

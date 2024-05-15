@@ -2,7 +2,7 @@
 
 
 @section('content')
-    <form method="POST" action="{{ route('users.create') }}">
+    <form method="POST" action="{{ route('users.create') }}" enctype="multipart/form-data">
         @csrf
         <input type="hidden" name="id" value="{{ $user->id }}">
         <input type="hidden" name="oldname" value="{{ $user->name }}">
@@ -43,6 +43,9 @@
                 erro de name
             @enderror
         </div>
-        <button type="submit" class="btn btn-primary">Update User</button>
+        <div>
+            <input type="file" name="photo" accept="image/*" id="">
+        </div>
+        <button type="submit" class="btn btn-primary mt-2">Update User</button>
     </form>
 @endsection

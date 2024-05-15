@@ -29,9 +29,12 @@
         <tbody>
             @foreach ($allUsers as $user)
                 <tr>
-                    <th scope="row">{{ $user->id }}</th>
+                    <th scope="row"><img height="30px" width="30px"
+                            src="{{ $user->photo ? asset('storage/' . $user->photo) : asset('images/nophoto.jpg') }}"
+                            alt=""></th>
                     <td>{{ $user->name }}</td>
                     <td>{{ $user->email }}</td>
+                    {{-- @if (user)== teacher --}}
                     <td><a href="{{ route('users.view', $user->id) }}" class="btn btn-info">Ver</a></td>
                     <td><a href="{{ route('users.delete', $user->id) }}" class="btn btn-danger">Apagar</a></td>
 

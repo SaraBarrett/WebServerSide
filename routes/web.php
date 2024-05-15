@@ -1,9 +1,11 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 Route::get('/', function () {
     return view('welcome');
@@ -34,6 +36,8 @@ Route::get('/hello', [IndexController::class, 'helloWorld'])->name('home.hello')
 Route::get('/hello/{name}', function ($name) {
     return '<h2>Olá '.$name.'</h2>';
 });
+
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
 //rota fallback - para onde vai caso o user coloque um url que não existe
 
