@@ -9,4 +9,4 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 
-Route::get('/task/{task}', [TaskApiController::class, 'show']);
+Route::apiResource('/task', TaskApiController::class);

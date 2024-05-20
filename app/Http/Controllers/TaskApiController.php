@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\TaskResource;
+use App\Http\Resources\TaskResourceCollection;
 use App\Models\Task;
 use Illuminate\Http\Request;
 
@@ -11,9 +12,10 @@ class TaskApiController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(): TaskResourceCollection
     {
-        //
+        return new TaskResourceCollection(resource: Task::paginate());
+
     }
 
     /**
@@ -29,7 +31,15 @@ class TaskApiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'description' => 'required',
+            'user_id' => 'required',
+        ]);
+
+        Task::create($request->all());
+
+        return response()->json('task criada');
     }
 
     /**
@@ -51,16 +61,20 @@ class TaskApiController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Task $task)
     {
-        //
+        $task->update($request->all());
+
+        return response()->json('task actualizada');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Task $task)
     {
-        //
+        $task->delete($task);
+
+        return response()->json('task apagada');
     }
 }
